@@ -1,0 +1,22 @@
+{
+  "name": "code-snippet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts/main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ts-node --files scripts/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.17",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "ol": "^7.2.2"
+  }
+}
