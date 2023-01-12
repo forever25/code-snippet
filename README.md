@@ -11,3 +11,4 @@
 ### [01.内置HTML类型.ts](content/typescript/01.内置HTML类型.ts) 
 ## vue3 
 ### [01.table-hook.js](content/vue3/01.table-hook.js) 
+### [02.editSeo.ts](content/vue3/02.editSeo.ts) 
