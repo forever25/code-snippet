@@ -1,5 +1,5 @@
 export const config: Config = {
-  title: '个人代码库',
+  title: '功能代码片段',
   description: '',
   dir: '../content/',
 };

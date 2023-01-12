@@ -37,6 +37,7 @@ export default class RenderMD {
     }
     this.mdContent += `${titleLevel} ${text} \n`;
   }
+
   /**
    * @description: 递归获取文件夹
    * @param {string} dirPath 需要获取文件夹地址
@@ -51,7 +52,9 @@ export default class RenderMD {
         this.createTitle(title, level);
         this.readDir(location, 1 + level);
       } else {
-        this.createLinkTitle(location.replace(this.contentPath, 'content\\'), location.split(path.sep).at(-1) || '', level);
+        let winPath = location.replace(this.contentPath, 'content/');
+        let linuxPath = winPath.replaceAll(path.sep, '/');
+        this.createLinkTitle(linuxPath, location.split(path.sep).at(-1) || '', level);
       }
     });
   }
