@@ -5,13 +5,15 @@
   "main": "scripts/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ts-node --files scripts/main.ts"
+    "build": "ts-node --files scripts/main.ts",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.17",
+    "husky": "^8.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
