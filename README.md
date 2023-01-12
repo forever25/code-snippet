@@ -6,5 +6,8 @@
 ## openlayers 
 ### [01.创建Map对象.md](content/openlayers/01.创建Map对象.md) 
 ### [02.地图计算辅助函数.js](content/openlayers/02.地图计算辅助函数.js) 
+### [03.给点进行补帧.js](content/openlayers/03.给点进行补帧.js) 
+## typescript 
+### [01.内置HTML类型.ts](content/typescript/01.内置HTML类型.ts) 
 ## vue3 
 ### [01.table-hook.js](content/vue3/01.table-hook.js) 
