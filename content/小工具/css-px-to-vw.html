@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>将css样式的px转vw </title>
+</head>
+
+<body>
+  <textarea id="textarea" rows="8" cols="60" onchange="createVw()">
+
+  </textarea>
+
+  <button onclick="createVw()">生成</button>
+
+  <div id="result"></div>
+  <script>
+    const WIDTH = 750   // 设计稿宽度
+    const oText = document.querySelector("#textarea")
+    const oResult = document.querySelector("#result")
+
+
+    function createVw() {
+      let text = oText.value
+      let str = ""
+      for (let i = 0; i < text.length; i++) {
+        if (/\d/.test(text[i])) {
+          let j = 1;
+          num = text[i];
+          while (/\d/.test(text[i + j])) {
+            num += text[i + j]
+            j++;
+          }
+          let strNum = ""
+          for (let z = 0; z < 3; z++) {
+            strNum += text[i + j + z]
+          }
+          if (strNum == 'px;') {
+            i += 3 + j;
+            num = pxToVw(num)
+            str += num + 'vw;'
+          } else {
+            i += j;
+            str += num + ";"
+          }
+        } else {
+          str += text[i]
+        }
+      }
+      oResult.innerHTML = str
+    }
+
+    function pxToVw(num) {
+      num = parseInt(num, 10)
+      return (num / WIDTH * 100).toFixed(3)
+    }
+  </script>
+</body>
+
+</html>

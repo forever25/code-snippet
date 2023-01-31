@@ -2,6 +2,12 @@
 
 import { nextTick } from 'vue';
 
+declare interface MetaInfo {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
 type metaNameType = 'keywords' | 'description';
 
 /**
@@ -49,9 +55,11 @@ const modifyMeta = (type: metaNameType, content: string) => {
   metaDom.setAttribute('content', content);
 };
 
+// 向外提供方法
 export default () => {
   return (metaInfo: MetaInfo) => {
     return new Promise<boolean>((resolve, reject) => {
+      // 路由跳转之后
       nextTick(() => {
         if (metaInfo?.title) {
           modifyTitle(metaInfo.title);
