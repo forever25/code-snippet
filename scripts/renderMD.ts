@@ -1,41 +1,43 @@
 import fs from 'fs';
 import path from 'path';
 
-export default class RenderMD {
-  mdContent: string;
-  contentPath: string = '';
+export default class CreateMDFile {
+  outputText: string; //
+  entry: string = '';
+
   constructor(config: Config) {
-    this.mdContent = '';
-    this.contentPath = path.join(__dirname, config.dir);
+    this.outputText = '';
+    this.entry = path.join(__dirname, config.dir);
     this.createTitle(config.title);
+    this.readDir(this.entry);
   }
 
   /**
-   * @description: 创建链接的title
+   * @description: 创建带链接的标题
    * @param {string} path
    * @param {number} text
    * @return {*}
    */
   createLinkTitle(path: string, text: string, level: number = 0): void {
-    let titleLevel: string = '';
+    let titleStr: string = '';
     for (let i = 0; i <= level; i++) {
-      titleLevel += '#';
+      titleStr += '#';
     }
-    this.mdContent += `${titleLevel} [${text}](${path}) \n`;
+    this.outputText += `${titleStr} [${text}](${path}) \n`;
   }
 
   /**
-   * @description: 根据level生成对应层级的标题
+   * @description: 根据生成对应层级的标题
    * @param {string} text
    * @param {number} level
    * @return {*}
    */
   createTitle(text: string, level: number = 0): void {
-    let titleLevel = '';
+    let titleStr = '';
     for (let i = 0; i <= level; i++) {
-      titleLevel += '#';
+      titleStr += '#';
     }
-    this.mdContent += `${titleLevel} ${text} \n`;
+    this.outputText += `${titleStr} ${text} \n`;
   }
 
   /**
@@ -52,7 +54,7 @@ export default class RenderMD {
         this.createTitle(title, level);
         this.readDir(location, 1 + level);
       } else {
-        let winPath = location.replace(this.contentPath, 'content/');
+        let winPath = location.replace(this.entry, 'content/');
         let linuxPath = winPath.replaceAll(path.sep, '/');
         this.createLinkTitle(linuxPath, location.split(path.sep).at(-1) || '', level);
       }
@@ -63,7 +65,7 @@ export default class RenderMD {
    * @description: 获取生成后的数据
    * @return {*}
    */
-  getMDContent(): string {
-    return this.mdContent;
+  getOutputText(): string {
+    return this.outputText;
   }
 }
